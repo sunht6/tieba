@@ -179,7 +179,7 @@ def main():
         logger.info("完成第" + str(n) + "个用户签到")
     logger.info("所有用户签到结束")
     #推送 server酱
-    sckey = os.environ['SCKSY']
+    sckey = os.environ['SCKEY']
     url = 'https://sc.ftqq.com/' + sckey + '.send'
     response = requests.get(url,params={"text":"贴吧自动签到完成", "desp":"OJBK"})
     data = json.loads(response.text)
