@@ -177,6 +177,14 @@ def main():
             client_sign(i, tbs, j["id"], j["name"])
         logger.info("完成第" + str(n) + "个用户签到")
     logger.info("所有用户签到结束")
+    #推送 server酱
+    sckey = os.environ['SCKSY']
+    url = 'https://sc.ftqq.com/' + sckey + '.send'
+    response = requests.get(url,params={"text":"贴吧自动签到完成", "desp":"OJBK"})
+    if data['errno'] == 0:
+        logger.info('Server酱推送成功')
+    else:
+        logger.info('Server酱推送失败,请检查sckey是否正确')
 
 
 if __name__ == '__main__':
