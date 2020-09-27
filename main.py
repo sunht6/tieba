@@ -5,6 +5,7 @@ import hashlib
 import time
 import copy
 import logging
+import json
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -181,6 +182,7 @@ def main():
     sckey = os.environ['SCKSY']
     url = 'https://sc.ftqq.com/' + sckey + '.send'
     response = requests.get(url,params={"text":"贴吧自动签到完成", "desp":"OJBK"})
+    data = json.loads(response.text)
     if data['errno'] == 0:
         logger.info('Server酱推送成功')
     else:
